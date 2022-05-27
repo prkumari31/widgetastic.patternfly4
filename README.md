@@ -9,7 +9,7 @@ Library of Patternfly v4 (aka Next) components for [Widgetastic](https://github.
 
 ## Components list
 
-Alert - <https://www.patternfly.org/v4/components/alert>
+Alert  - <https://www.patternfly.org/v4/components/alert>
 
 Breadcrumb - <https://www.patternfly.org/v4/components/breadcrumb>
 
