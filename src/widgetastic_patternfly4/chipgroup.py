@@ -13,15 +13,15 @@ class ChipReadOnlyError(Exception):
         self.chip = chip
 
 
-CHIP_ROOT = ".//div[@class='pf-c-chip' and not(contains(@class, 'pf-m-overflow'))]"
-CHIP_TEXT = ".//span[contains(@class, 'pf-c-chip__text')]"
+CHIP_ROOT = ".//div[@class='pf-v5-c-chip']"
+CHIP_TEXT = ".//span[contains(@class, 'pf-v5-c-chip__text')]"
 CHIP_BADGE = ".//span[contains(@class, 'pf-c-badge')]"
-GROUP_ROOT = ".//div[contains(@class, 'pf-c-chip-group')]"
+GROUP_ROOT = ".//div[contains(@class, 'pf-v5-c-chip-group pf-m-category')]"
 CATEGORY_GROUP_ROOT = (
-    ".//div[contains(@class, 'pf-c-chip-group') and contains(@class, 'pf-m-category')]"
+    ".//div[contains(@class, 'pf-v5-c-chip-group pf-m-category')]"
 )
-CATEGORY_LABEL = ".//span[contains(@class, 'pf-c-chip-group__label')]"
-CATEGORY_CLOSE = "./div[contains(@class, 'pf-c-chip-group__close')]/button"
+CATEGORY_LABEL = ".//span[contains(@class, 'pf-v5-c-chip-group__label')]"
+CATEGORY_CLOSE = ".//span[contains(@class, 'pf-v5-c-chip__actions')]//button"
 # For backwards compatibility
 OLD_GROUP_ROOT = ".//ul[contains(@class, 'pf-c-chip-group')]"
 TOOLBAR_GROUP_LABEL = "./li/*[contains(@class, 'pf-c-chip-group__label')]"
