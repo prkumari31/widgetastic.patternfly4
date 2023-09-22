@@ -1,5 +1,7 @@
 from widgetastic.ouia import OUIAGenericView
 from widgetastic.ouia import OUIAGenericWidget
+from widgetastic.ouia.input import TextInput as BaseOuiaTextInput
+from widgetastic.ouia.text import Text as BaseOuiaText
 from widgetastic.widget.table import Table
 from widgetastic.xpath import quote
 
@@ -7,6 +9,7 @@ from widgetastic_patternfly4.alert import BaseAlert
 from widgetastic_patternfly4.breadcrumb import BaseBreadCrumb
 from widgetastic_patternfly4.button import BaseButton
 from widgetastic_patternfly4.card import BaseCard
+from widgetastic_patternfly4.clipboardcopy import BaseClipboardCopy
 from widgetastic_patternfly4.contextselector import BaseContextSelector
 from widgetastic_patternfly4.dropdown import BaseDropdown
 from widgetastic_patternfly4.dropdown import BaseGroupDropdown
@@ -24,6 +27,7 @@ from widgetastic_patternfly4.select import BaseSelect
 from widgetastic_patternfly4.switch import BaseSwitch
 from widgetastic_patternfly4.table import BaseExpandableTable
 from widgetastic_patternfly4.table import BasePatternflyTable
+from widgetastic_patternfly4.title import BaseTitle
 
 
 class Alert(BaseAlert, OUIAGenericWidget):
@@ -135,3 +139,19 @@ class ContextSelector(BaseContextSelector, Select):
 
 class OptionsMenu(BaseOptionsMenu, Dropdown):
     OUIA_COMPONENT_TYPE = "PF4/OptionsMenu"
+
+
+class Title(BaseTitle, OUIAGenericWidget):
+    OUIA_COMPONENT_TYPE = "PF4/Title"
+
+
+class Text(BaseOuiaText):
+    OUIA_COMPONENT_TYPE = "PF4/Text"
+
+
+class TextInput(BaseOuiaTextInput):
+    OUIA_COMPONENT_TYPE = "PF4/TextInput"
+
+
+class ClipboardCopy(BaseClipboardCopy, OUIAGenericWidget):
+    OUIA_COMPONENT_TYPE = "PF4/ClipboardCopy"

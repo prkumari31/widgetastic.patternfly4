@@ -32,20 +32,19 @@ class Cards(CardGroup):
 
 @pytest.fixture
 def cards(browser):
-
     cards = Cards(browser)
     wait_for(lambda: cards.is_displayed, timeout="15s")
     return cards
 
 
 def test_read_and_drop_second_card(cards):
-    second = list(cards)[1]
+    second = [*cards][1]
 
     assert second.header_text.read() == "Patternfly"
 
     second.delete_action()
 
-    new_second = list(cards)[1]
+    new_second = [*cards][1]
 
     assert new_second.header_text.read() != "Patternfly"
 

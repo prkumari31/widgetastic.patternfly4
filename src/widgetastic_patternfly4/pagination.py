@@ -18,7 +18,7 @@ class PaginationNavDisabled(Exception):
 class BasePagination:
     """Represents the Patternfly pagination.
 
-    https://www.patternfly.org/v4/documentation/react/components/pagination
+    https://www.patternfly.org/v4/components/pagination
     """
 
     DEFAULT_LOCATOR = (
@@ -33,6 +33,20 @@ class BasePagination:
     _items = Text(".//span[@class='pf-c-options-menu__toggle-text']")
     _current_page = TextInput(locator=".//input[@aria-label='Current page']")
     _total_pages = Text(".//div[@class='pf-c-pagination__nav-page-select']/span")
+
+    @property
+    def is_enabled(self):
+        """Overriding is_enabled property.
+
+        Returns ``True`` when pagination dropdown button is enabled along with next & last button.
+        """
+        el = self.browser.element(self._last)
+        last_flag = el.is_enabled() if el.is_displayed() else True
+        return (
+            self.browser.element(self._options.BUTTON_LOCATOR).is_enabled()
+            and self.browser.element(self._next).is_enabled()
+            and last_flag
+        )
 
     @property
     def cached_per_page_value(self):

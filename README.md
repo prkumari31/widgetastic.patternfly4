@@ -17,17 +17,29 @@ Button - <https://www.patternfly.org/v4/components/button>
 
 Bullet Chart - <https://www.patternfly.org/v4/charts/bullet-chart>
 
+Calendar month - <https://www.patternfly.org/v4/components/calendar-month>
+
 Card - <https://www.patternfly.org/v4/components/card>
 
 Chip Group - <https://www.patternfly.org/v4/components/chip-group>
 
+Clipboard copy - <https://www.patternfly.org/v4/components/clipboard-copy>
+
 Context Selector - <https://www.patternfly.org/v4/components/context-selector>
 
+Description list - <https://www.patternfly.org/v4/components/description-list>
+
 Donut Chart - <https://www.patternfly.org/v4/charts/donut-chart>
+
+Dual list selector - <https://www.patternfly.org/v4/components/dual-list-selector>
+
+Drawer - <https://www.patternfly.org/v4/components/drawer>
 
 Dropdown - <https://www.patternfly.org/v4/components/dropdown>
 
 FormSelect - <https://www.patternfly.org/v4/components/form-select>
+
+LineChart - <https://www.patternfly.org/v4/charts/line-chart>
 
 Menu - <https://www.patternfly.org/v4/components/menu>
 
@@ -45,6 +57,8 @@ Popover - <https://www.patternfly.org/v4/components/popover>
 
 Progress - <https://www.patternfly.org/v4/components/progress>
 
+Radio - <https://www.patternfly.org/v4/components/radio>
+
 Select - <https://www.patternfly.org/v4/components/select>
 
 Slider - <https://www.patternfly.org/v4/components/slider>
@@ -54,6 +68,8 @@ Switch - <https://www.patternfly.org/v4/components/switch>
 Table - <https://www.patternfly.org/v4/components/table>
 
 Tabs - <https://www.patternfly.org/v4/components/tabs>
+
+Title - <https://www.patternfly.org/v4/components/title>
 
 ## Contribution guide
 
@@ -77,14 +93,17 @@ pre-commit install
 
 ## Testing
 
-The library has selenium tests that are performed against [Patternfly React docs](https://patternfly-react.surge.sh/patternfly-4/).
+The library has selenium tests that are performed against [Patternfly React docs](https://patternfly-react.surge.sh).
 It's also configured to run the tests every time when a new version of that page is released.
-Tests spawn a container from `quay.io/redhatqe/selenium-standalone` image. It has configured
-Selenium standalone server and the browsers (Chrome and Firefox).
+
+Tests spawn a container from official selenium image - [selenium/standalone-{chrome/firefox}](https://hub.docker.com/u/selenium).
+We can check local runs via vnc `http://localhost:7900`
 
 **Note:** Tests use `podman` to manage containers. Please install it before running.
 
-It's possible to run tests in parallel to speed up the execution. Use `-n` key tp specify a number
+It's possible to run tests in parallel to speed up the execution. Make sure that you have **xdist** python plugin installed.
+
+Use `-n` key to specify a number
 of workers:
 
 ```bash

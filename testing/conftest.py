@@ -28,9 +28,8 @@ def browser_name(pytestconfig):
 
 
 @pytest.fixture(scope="session")
-def selenium_url(pytestconfig, worker_id):
+def selenium_url(pytestconfig, browser_name, worker_id):
     forced_host = pytestconfig.getoption("--force-host")
-
     if forced_host is None:
         oktet = 1 if worker_id == "master" else int(worker_id.lstrip("gw")) + 1
         host = f"127.0.0.{oktet}"
@@ -43,17 +42,21 @@ def selenium_url(pytestconfig, worker_id):
                 "-p",
                 f"{host}:4444:4444",
                 "-p",
-                f"{host}:5999:5999",
+                f"{host}:7900:7900",
+                "-e",
+                "SE_VNC_NO_PASSWORD=1",
                 "--shm-size=2g",
-                "quay.io/redhatqe/selenium-standalone:latest",
+                f"selenium/standalone-{browser_name}:4.9.0-20230421",
             ],
             stdout=subprocess.PIPE,
         )
+        print(f"VNC url: http://{host}:7900")
 
         yield f"http://{host}:4444"
         container_id = ps.stdout.decode("utf-8").strip()
         subprocess.run(["podman", "kill", container_id], stdout=subprocess.DEVNULL)
     else:
+        print(f"VNC url: http://{forced_host}:7900")
         yield f"http://{forced_host}:4444"
 
 
